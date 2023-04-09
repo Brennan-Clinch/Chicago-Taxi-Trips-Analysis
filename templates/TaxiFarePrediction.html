@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    
+    <link rel="stylesheet" type = "text/css" href="{{ url_for('static', filename='css/main.css') }}">
+  </head>
+    <body>
+        <div class="container">
+            <h1>Calculate your estimated Chicago Taxi Fare!</h1>
+            <h4>Wanting to plan your vacation or transportation budget ahead for your trip to Chicago? Fill out the information below to find out your estimated taxi fare.
+            </h4>
+            <div class='Login'>
+              <form action="{{ url_for('predict') }}"method="post">
+			  <h5>What is the estimated distance of your trip (miles)?</h5>
+                  <input type="text" class='form-control' name="trip_miles" placeholder="Input Trip Miles" required="required" /><br>
+			  <h5>What is the estimated duration of your trip (minutes)?</h5>
+                  <input type="text" class='form-control' name="trip_minutes" placeholder="What is the estimated trip minutes?" required="required" /><br>
+			  <h5> What Taxi Company do you plan on using? </h5>
+			  <h5> Options:</h5>
+			  <p> 0: 24 Seven Taxi, 1: Benny Jona, 2: Medallion Management Corp, 3: RC Andrews Cab, 4: David K Cab Corp, 5: Adwar H Nikola </p>
+              <p> 6: 5 Star Taxi, 7: Sam Mestas, 8: Babylon Express Inc., 9-10: Blue Ribbon Taxi Association, 11: Chicago Carriage Cab Corp </p>
+              <p> 12: Chicago Independents, 13: Chicago TaxiCab, 14: Choice Taxi Association, 15: City Service, 16: Flash Cab, 17: Globe Taxi </p>
+              <p> 18-19: KOAM Taxi Association, 20:	Leonard Cab Co., 21: Medallion Leason, 22: Metro Jet Taxi A., 23: Patriot Taxi DBA Peace Taxi Association </p>
+              <p> 24: Petani Cab Corp, 25: Setare Inc., 26: Star North Taxi Management, 27: Sun Taxi, 28: Taxi Affiliation Services, 29-30: TopCab Insurance Agency </p>
+              <p> 31: Top Cab, 32: Top Cab Affiliation, 33: U TaxiCab </p>			  
+                  <input type="text" class='form-control' name="company" placeholder="Input Taxi Company Number" required="required" /><br>
+		      <h5> What month do you plan on having your trip? (1-12) </h5>
+                  <input type="text" class='form-control' name="month" placeholder="Input Month Number?" required="required" /><br>
+			  <h5> What week during the year do you plan on having your trip? (1-52) </h5>
+				  <input type="text" class='form-control' name="Week" placeholder="Input Week Number" required="required" /><br>
+			  <h5> What day during the month is your trip? (1-31) </h5>
+				  <input type="text" class='form-control' name="day" placeholder="Input day of month" required="required" /><br>
+			  <h5> What hour do you plan on having your trip? </h5>
+                  <input type="text" class='form-control' name="hour" placeholder="Input hour of day" required="required" /><br>
+			  <h5> What day during the week do you plan on going? 0: Friday, 1: Monday, 2: Saturday, 3: Sunday, 4: Thursday, 5: Tuesday, 6: Wednesday </h5>
+				  <input type="text" class='form-control' name="weekday" placeholder="Input day of week" required="required" /><br>
+			  <h5> What is your pick up location? Feel free to use gps or google maps. </h5>
+			  <h5> Options:</h5>
+			  <p> 0: CSU, 1: Calumet Heights, 2: Calumet Park, 3: Windsor Park, 4: Dolton, 5: East Lincolnwood/Wrigley, 6: Englewood, 7: Evergreen, 8: Garfield Park </p>
+			  <p> 9: Glendale, 10: Grand Boulevard, 11: Humboldt Park, 12: Lawndale, 13: Loyola, 14: MDW Airport, 15: Morgan Park, 16: Navy Pier, 17: O'Hare Airport </p>
+			  <p> 18: Soldier Field, 19: South Lincolnwood, 20: UIC, 21: UOC </p>
+				  <input type="text" class='form-control' name="pick_up_area" placeholder= "Input Pick Up Area" required="required" /><br>
+			  <h5> What is your drop off location? </h5>
+			  <h5> Options:</h5>
+			  <p> 0: CSU, 1: Calumet Heights, 2: Calumet Park, 3: Windsor Park, 4: Dolton, 5: East Lincolnwood/Wrigley, 6: Englewood, 7: Evergreen, 8: Garfield Park </p>
+			  <p> 9: Glendale, 10: Grand Boulevard, 11: Humboldt Park, 12: Lawndale, 13: Loyola, 14: MDW Airport, 15: Morgan Park, 16: Navy Pier, 17: O'Hare Airport </p>
+			  <p> 18: Soldier Field, 19: South Lincolnwood, 20: UIC, 21: UOC </p>
+				  <input type="text" class='form-control' name="dropoff_area" placeholder= "Input Drop Off Area" required="required" /><br>
+			  <h5> Will your date of travel be a holiday? 0=No, 1=Yes </h5>
+                  <input type="text" class='form-control' name="Is Holiday" placeholder="Input Holiday" required="required" /><br>
+			  <h5> Will there be snow on your trip? 0=No, 1=Yes </h5>
+				  <input type="text" class='form-control' name="Is Snow Day" placeholder="Input if it will be snowing" required="required" /><br>
+			  <h5> What is the estimated gas price in Chicago on your trip date (Just use current if it's a little out) </h5>
+				  <input type="text" class='form-control' name="Weekly Gas Price" placeholder="Input Gas Price" required="required" /><br>
+				  
+                  <button type="submit" class='btn btn-primary btn-block btn-Large'>Predict Taxi Fare!</button>
+              </form>
+            </div>
+            <br>
+            <br>
+            <h1>{{ prediction_text }}</h1>
+        </div>
+    </body>
+</html
